@@ -1,0 +1,47 @@
+﻿@model eGym.Models.ReportModel
+@{
+    ViewData["Title"] = "Generate report";
+    bool Admin = User.IsInRole("admin");
+}
+<h1 class="display-4 text-center">Generate report</h1>
+
+<hr />
+<br />
+<br />
+<div class="container d-grid justify-content-center mt-4">
+    <form asp-controller="Report" method="get">
+    <div class="row">
+        <div class="col-12 d-grix justify-content-center align-items-center">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                <label class="control-label">Start date</label>
+                    <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                <label class="control-label">End date</label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        @if (Admin)
+        {
+                <button type="submit" class="btn btn-primary" asp-action="TicketsReport">Tickets sold report</button>
+                <button type="submit" class="btn btn-warning" asp-action="ClassesReport">Report of sold classes for the client</button>
+                <button type="submit" class="btn btn-success" asp-action="PaymentsReport">Balance report for individual gyms</button>
+                <button type="submit" class="btn btn-secondary" asp-action="OpinionsReport">Report of opinions expressed</button>
+        }
+    </div>
+    </form>
+   
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

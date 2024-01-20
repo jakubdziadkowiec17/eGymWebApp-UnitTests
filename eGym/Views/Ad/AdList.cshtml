@@ -1,0 +1,59 @@
+﻿@model IEnumerable<eGym.Models.AdModel>
+@{
+    ViewData["Title"] = "Ad list";
+    bool Admin = User.IsInRole("admin");
+}
+
+<div class="text-center">
+    <h1 class="display-3">Ad list</h1>
+</div>
+<br />
+<br />
+            <p>
+                <a class="btn btn-success btn-lg" asp-action="Add">Create</a>
+            </p>
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Created date
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <img src="@("~/Ad/"+item.ImagePath)" asp-append-version="true" height="155px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                    <td>
+                    <a onclick="return window.confirm('Are you sure you want to delete the specified record?')" href="/Ad/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

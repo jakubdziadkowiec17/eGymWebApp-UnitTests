@@ -1,0 +1,64 @@
+﻿@model eGym.Models.MyTicketModel
+@{
+    ViewData["Title"] = "Order a ticket";
+    bool Admin = User.IsInRole("admin");
+    bool Employee = User.IsInRole("employee");
+    bool Client = User.IsInRole("client");
+}
+<h1 class="display-4">Order a ticket</h1>
+
+<hr />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Ticket</label>
+                <select asp-for="TicketId" asp-items="ViewBag.TicketList" class="form-select" aria-label="Select ticket"></select>
+            </div>
+            @if (Client)
+            {
+                <div class="form-group">
+                    <label class="control-label">Gym</label>
+                <select asp-for="GymId" asp-items="ViewBag.GymList" class="form-select" aria-label="Select gym"></select>
+            </div>
+            }
+            @if (Admin || Employee)
+            {
+                <div class="form-group">
+                    <label class="control-label">Ticket status</label>
+                    <select asp-for="TicketStatus" asp-items="Html.GetEnumSelectList(typeof(TicketStatus))" class="form-select" aria-label="Select status"></select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Last name</label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Address</label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            }
+            <br />
+            <div class="form-group">
+                <a class="btn btn-dark" asp-controller="MyTicket" asp-action="MyTicketList">My Ticket list</a>
+                <input type="submit" value="Order a ticket" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

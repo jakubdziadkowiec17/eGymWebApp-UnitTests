@@ -1,0 +1,85 @@
+﻿@model IEnumerable<eGym.Models.OpinionModel>
+@{
+    ViewData["Title"] = "Opinion list";
+    bool Admin = User.IsInRole("admin");
+    bool Employee = User.IsInRole("employee");
+    bool Client = User.IsInRole("client");
+}
+<div class="mx-4">
+<div class="text-center">
+        <h1 class="display-3">Opinion list</h1>
+</div>
+<br />
+<br />
+    @if (Client)
+    {
+        <a href="/Opinion/Add?id=@ViewBag.GymId" class="btn btn-success">Manage your opinion about this gym</a>
+    }
+    <div class="table-responsive">
+    <table class="table table-striped">
+    <thead>
+        <tr>
+                <th>
+                    User
+                </th>
+                <th>
+                    Gym
+                </th>
+                <th>
+                    Rating
+                </th>
+                <th>
+                    Comment
+                </th>
+                <th>
+                    Opinion Date
+                </th>
+                <th>
+                    Action
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                        @ViewBag.Gym
+                        </td>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                        </td>
+                        <td>
+                        @{
+                            string comment = item.Comment;
+                            if (comment.Length > 70)
+                            {
+                                comment = comment.Substring(0, 70) + "...";
+                            }
+                        }
+                        @Html.Raw(comment)
+                        </td>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.OpinionDate)
+                        </td>
+                        <td>
+                            <a href="/Opinion/Details?id=@item.Id" class="btn btn-primary">Details</a>
+                        @if (Admin == true)
+                        {
+                            <a onclick="return window.confirm('Are you sure you want to delete the specified record?')" href="/Opinion/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                        }
+                        </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

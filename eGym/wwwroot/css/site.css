@@ -1,0 +1,37 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 8rem;
+    margin-top: 5rem;
+}
+
+.main-logo{
+    max-width: 5rem;
+    max-height: 5rem;
+}
+
+.home-carousel {
+    max-height: 35rem; 
+}
+
+.carousel-img {
+    max-height: 35rem; 
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+

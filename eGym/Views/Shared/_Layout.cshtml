@@ -1,0 +1,101 @@
+﻿@using System.Security.Claims;
+@{
+    string username = User.Identity.Name;
+    bool Admin = User.IsInRole("admin");
+    bool Employee = User.IsInRole("employee");
+    bool Client = User.IsInRole("client");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/eGym.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <b><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">eGym</a></b>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav" style="margin-left: auto;">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Gym" asp-action="GymList">Gyms</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Ticket" asp-action="TicketList">Price list</a></li>
+                        @if (Employee)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Task" asp-action="TaskList" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier)?.Value">Tasks</a>
+                            </li>
+                        }
+                        @if (Employee || Client)
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Classes" asp-action="MyClassesList">My Classes</a></li>
+                        }
+                        @if (Admin || Employee)
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="User" asp-action="ClientList">Clients</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="User" asp-action="EmployeeList">Employees</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Equipment" asp-action="EquipmentList">Equipment</a></li>
+                        }
+                        @if (Admin || Employee || Client)
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="MyTicket" asp-action="MyTicketList">My Tickets</a></li>
+                        }
+                        @if (Admin)
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Payment" asp-action="PaymentList">Payments</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Report" asp-action="Generate">Reports</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Ad" asp-action="Adlist">Ads</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="News" asp-action="Newslist">News</a></li>
+                        }
+                        @if (!Admin && !Employee && !Client)
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="User" asp-action="Login">Log in</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="User" asp-action="Register">Sign up</a></li>
+                        }
+                        @if (Admin || Employee || Client)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-black" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    My Account
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                                    <a class="dropdown-item text-black" href="@Url.Action("Edit", "User")">Edit Profile</a>
+                                    <a class="dropdown-item text-black" href="@Url.Action("ResetPassword", "User")">Reset Password</a>
+                                    <hr class="dropdown-divider">
+                                    <a class="dropdown-item text-black" href="@Url.Action("Logout", "User")">Log out</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <center>2023 &copy; eGym</center>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

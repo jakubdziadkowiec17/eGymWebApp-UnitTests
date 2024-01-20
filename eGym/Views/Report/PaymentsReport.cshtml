@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Balance report for individual gyms";
+}
+<div class="row">
+<div class="text-center">
+        <h1 class="display-3">Balance report for individual gyms</h1>
+</div>
+    <p>&nbsp;</p>@ViewBag.Start - @ViewBag.End<p>&nbsp;</p>
+    <div class="table-responsive">
+    <table class="table table-bordered table-rounded">
+    <thead>
+        <tr>
+            <th>
+                Gym
+            </th>
+                <th>
+                    Sum of Price
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@item.Gym</td>
+                    <td>@item.SumOfPrice zł</td>
+                </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>

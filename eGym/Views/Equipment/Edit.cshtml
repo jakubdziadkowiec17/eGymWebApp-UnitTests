@@ -1,0 +1,76 @@
+﻿@model eGym.Models.EquipmentModel
+@{
+    ViewData["Title"] = "Edit an equipment";
+    bool Admin = User.IsInRole("admin");
+}
+<h1 class="display-4">Edit an equipment</h1>
+
+<hr />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <input type="hidden" class="input" asp-for="Id">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Equipment Id</label>
+                <input asp-for="Id" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Name</label>
+                <input asp-for="Name" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            @if(Admin)
+            {
+                <div class="form-group">
+                    <label class="control-label">Gym</label>
+                    <select asp-for="GymId" asp-items="ViewBag.GymList" class="form-select" aria-label="Select gym"></select>
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <label class="control-label">GymId</label>
+                    <input asp-for="GymId" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="GymId" class="text-danger"></span>
+                </div>
+            }
+            <div class="form-group">
+                <label class="control-label">Equipment status</label>
+                <select asp-for="EquipmentStatus" class="form-select">
+                    <option value="InUse">In use</option>
+                    <option value="Broken">Broken</option>
+                    <option value="InRepair">In repair</option>
+                    <option value="Withdrawn">Withdrawn</option>
+                </select>
+                <span asp-validation-for="EquipmentStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Last modified date</label>
+                <input asp-for="LastModifiedDate" class="form-control" readonly="readonly" />
+                <span asp-validation-for="LastModifiedDate" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                @if (Admin)
+                {
+                    <a href="/Equipment/EquipmentList?id=@Html.DisplayFor(model => model.GymId)" class="btn btn-dark">Gym equipment</a>
+                }
+                else
+                {
+                    <a href="/Equipment/EquipmentList" class="btn btn-dark">Gym equipment</a>
+                }
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

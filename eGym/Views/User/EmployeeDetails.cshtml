@@ -1,0 +1,78 @@
+﻿@model eGym.Models.UserModel
+@{
+    ViewData["Title"] = "Employee details";
+    bool Admin = User.IsInRole("admin");
+}
+<h1 class="display-4">Employee details</h1>
+
+<hr />
+<br />
+<br />
+<div class="row">
+    <dl class="row">
+        @if (Admin)
+        {
+            <dt class="col-sm-2">
+                <label>Id</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+        }
+        <dt class="col-sm-2">
+            <label>Name</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Last Name</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Username</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            <label>E-mail</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Phone number</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Address</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Gym</label>
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                string gymName;
+                if (ViewBag.GymDictionary.TryGetValue(Model.GymId, out gymName))
+                    @gymName
+            }
+        </dd>
+    </dl>
+</div>
+<div class="form-group">
+    <a class="btn btn-dark" asp-controller="User" asp-action="EmployeeList">Employee list</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

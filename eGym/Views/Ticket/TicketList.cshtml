@@ -1,0 +1,87 @@
+﻿@model IEnumerable<eGym.Models.TicketModel>
+@{
+    ViewData["Title"] = "Tickets";
+    bool Admin = User.IsInRole("admin");
+}
+<div class="row">
+<div class="text-center">
+    <h1 class="display-3">Tickets</h1>
+</div>
+<br />
+<br />
+    <br />
+    <br />
+        @if (Admin)
+        {
+        <p>
+        <a class="btn btn-success btn-lg" asp-action="Add">Create</a>
+        </p>
+        }
+    <br />
+    <br />
+    <br />
+    <div class="table-responsive">
+    <table class="table table-bordered table-rounded">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Reduced ticket
+            </th>
+                <th>
+                    Number of days
+                </th>
+            <th>
+                    Price
+            </th>
+            @if (Admin)
+            {
+            <th>
+                Action
+            </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketName)
+                </td>
+                <td>
+                    @if (item.ReducedTicket)
+                    {
+                        <span>Yes</span>
+                    }
+                    else
+                    {
+                        <span>No</span>
+                    }
+                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberOfDays)
+                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price) zł
+                </td>
+                        @if (Admin)
+                        {
+                        <td>
+                            <a href="/Ticket/Edit?id=@item.Id" class="btn btn-warning">Edit</a>
+                            <a onclick="return window.confirm('Are you sure you want to delete the specified record?')" href="/Ticket/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                        }
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

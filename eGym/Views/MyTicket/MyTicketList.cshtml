@@ -1,0 +1,169 @@
+﻿@model IEnumerable<eGym.Models.MyTicketModel>
+@{
+    ViewData["Title"] = "My Tickets";
+    bool Admin = User.IsInRole("admin");
+    bool Employee = User.IsInRole("employee");
+    bool Client = User.IsInRole("client");
+}
+<div class="mx-4">
+<div class="text-center">
+        <h1 class="display-3">My Tickets</h1>
+</div>
+<br />
+<br />
+    @if ((Employee && ViewBag.IdGym == ViewBag.CurrentUserGymId) || Client)
+    {
+        <p>
+            <a class="btn btn-success btn-lg" asp-action="Add">Order a ticket</a>
+        </p>
+    }
+    @if (Employee || Client || Admin)
+    {
+        <div class="form-group">
+            <input type="text" class="form-control" id="search" placeholder="Enter name or last name">
+        </div>
+        <br />
+    }
+    <div class="table-responsive">
+    <table class="table table-striped">
+    <thead>
+        <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Ticket name
+                </th>
+                <th>
+                    Reduced ticket
+                </th>
+                <th>
+                    Number of days
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Ticket status
+                </th>
+                <th>
+                    Expiration date
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Last name
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Gym name
+                </th>
+                <th>
+                    Action
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketName)
+                        </td>
+                        <td>
+                            @if (item.ReducedTicket)
+                            {
+                                <span>Yes</span>
+                            }
+                            else
+                            {
+                                <span>No</span>
+                            }
+                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberOfDays)
+                    </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price) zł
+                        </td>
+                        <td>
+                        @if (item.ExpirationDate >= DateTime.Now || item.ExpirationDate == null)
+                        {
+                            <span>@Html.DisplayFor(modelItem => item.TicketStatus)</span>
+                        }
+                        else
+                        {
+                            <span>Expired</span>
+                        }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ExpirationDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GymName)
+                        </td>
+                        <td>
+                        @if (item.TicketStatus == TicketStatus.NotPaid && (Employee == true && item.GymId == ViewBag.CurrentUserGymId))
+                        {
+                            <a href="/MyTicket/Pay?id=@item.Id" class="btn btn-warning">Mark as paid</a>
+                        }
+                        @if (item.TicketStatus == TicketStatus.Paid && (Employee == true && item.GymId == ViewBag.CurrentUserGymId || ViewBag.CurrentUserId == item.UserId))
+                        {
+                            <a href="/MyTicket/Activate?id=@item.Id" class="btn btn-info">Activate</a>
+                        }
+                        @if (Admin == true || Employee == true || ViewBag.CurrentUserId == item.UserId)
+                        {
+                            <a href="/MyTicket/Details?id=@item.Id" class="btn btn-primary">Details</a>
+                        }
+                        @if (item.TicketStatus == TicketStatus.NotPaid && (Admin == true || (Employee == true && item.GymId == ViewBag.CurrentUserGymId) || ViewBag.CurrentUserId == item.UserId))
+                        {
+                            <a onclick="return window.confirm('Are you sure you want to delete the specified record?')" href="/MyTicket/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                        }
+                        </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function ()
+        {
+            $("#search").on("input", function ()
+            {
+                var searchValue = $(this).val().toLowerCase();
+                $("tbody tr").each(function () {
+                    var fullName = ($(this).find("td:eq(7)").text() + " " + $(this).find("td:eq(8)").text()).toLowerCase();
+                    if (fullName.includes(searchValue))
+                    {
+                        $(this).show();
+                    }
+                    else
+                    {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+}

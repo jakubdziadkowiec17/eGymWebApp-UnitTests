@@ -1,0 +1,121 @@
+22.12.2023 15:26:04 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 19
+22.12.2023 15:26:33 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 13
+22.12.2023 15:26:37 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 19
+22.12.2023 15:26:39 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 9
+22.12.2023 15:26:49 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 13
+22.12.2023 15:26:53 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 9
+22.12.2023 15:27:04 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 19
+22.12.2023 15:27:07 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 13
+22.12.2023 15:27:11 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 9
+22.12.2023 15:28:56 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 19
+22.12.2023 15:29:06 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 19
+22.12.2023 15:29:08 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 13
+22.12.2023 15:29:11 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 9
+22.12.2023 15:34:53 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement added: 28
+22.12.2023 15:34:59 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement deleted: 28
+22.12.2023 15:35:37 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement added: 29
+22.12.2023 15:35:41 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement deleted: 29
+22.12.2023 15:38:57 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement added: 30
+22.12.2023 15:39:22 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement added: 31
+22.12.2023 15:39:26 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement deleted: 31
+22.12.2023 15:39:34 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement added: 32
+22.12.2023 15:39:39 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement added: 33
+22.12.2023 15:39:45 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement added: 34
+22.12.2023 15:40:09 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - News updated: 14
+22.12.2023 15:40:15 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - News added: 15
+22.12.2023 15:40:21 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - News added: 16
+22.12.2023 15:41:51 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - News updated: 16
+22.12.2023 15:41:57 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - News updated: 15
+22.12.2023 15:42:00 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - News updated: 14
+22.12.2023 15:47:59 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 7
+22.12.2023 15:48:02 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 6
+22.12.2023 15:48:10 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 3
+22.12.2023 15:48:19 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 4
+22.12.2023 15:48:23 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 3
+22.12.2023 15:48:27 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 6
+22.12.2023 15:48:32 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym updated: 7
+22.12.2023 15:48:47 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym deleted: 4
+22.12.2023 15:48:48 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Gym deleted: 3
+22.12.2023 15:50:26 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Ticket updated: 5
+22.12.2023 15:50:46 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Ticket updated: 6
+22.12.2023 15:51:03 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Ticket updated: 6
+22.12.2023 15:51:59 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Equipment deleted: 11
+22.12.2023 15:52:00 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Equipment deleted: a
+22.12.2023 15:52:04 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Equipment deleted: abc
+22.12.2023 15:52:06 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Equipment deleted: r
+22.12.2023 15:52:45 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Equipment added: A/0001
+22.12.2023 15:53:01 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Equipment added: A/0002
+22.12.2023 15:53:54 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Employee edited: b7f8af24-bf10-479a-a3ee-60eb2659e52b
+22.12.2023 15:54:24 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Employee edited: ce76ae6c-0dc3-44df-9d69-95da7c9b9230
+22.12.2023 15:54:36 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Employee edited: e9eec544-71e3-452f-ac19-1a42492d0045
+22.12.2023 15:55:08 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - User edited: 3220bf40-f1b1-483b-a00e-7e0605314117
+22.12.2023 15:55:20 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - User edited: 72b93486-d781-410f-820c-de8ab6e371b5
+22.12.2023 15:55:43 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - User edited: 97617729-083d-43df-8e11-2b4908fdc1eb
+22.12.2023 16:06:41 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 68
+22.12.2023 16:06:43 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 69
+22.12.2023 16:06:44 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 70
+22.12.2023 16:06:47 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 71
+22.12.2023 16:06:49 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 72
+22.12.2023 16:06:51 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 73
+22.12.2023 16:06:54 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 74
+22.12.2023 16:06:56 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 75
+22.12.2023 16:06:58 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 76
+22.12.2023 16:07:00 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 77
+22.12.2023 16:07:02 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 78
+22.12.2023 16:07:04 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 79
+22.12.2023 16:07:07 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 80
+22.12.2023 16:07:09 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 81
+22.12.2023 16:07:11 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 82
+22.12.2023 16:07:13 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - MyTicket added: 83
+22.12.2023 16:08:03 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as paid: 83
+22.12.2023 16:08:03 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - Payment added: 50
+22.12.2023 16:08:04 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as active: 83
+22.12.2023 16:08:04 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as paid: 82
+22.12.2023 16:08:04 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - Payment added: 51
+22.12.2023 16:08:05 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as active: 82
+22.12.2023 16:08:07 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as paid: 80
+22.12.2023 16:08:07 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - Payment added: 52
+22.12.2023 16:08:09 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as paid: 79
+22.12.2023 16:08:09 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - Payment added: 53
+22.12.2023 16:08:10 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as paid: 78
+22.12.2023 16:08:10 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - Payment added: 54
+22.12.2023 16:08:11 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as active: 78
+22.12.2023 16:08:14 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as paid: 77
+22.12.2023 16:08:14 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - Payment added: 55
+22.12.2023 16:08:17 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as active: 77
+22.12.2023 16:08:21 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as paid: 75
+22.12.2023 16:08:21 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - Payment added: 56
+22.12.2023 16:08:22 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as active: 75
+22.12.2023 16:08:24 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as paid: 76
+22.12.2023 16:08:24 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - Payment added: 57
+22.12.2023 16:08:25 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as paid: 74
+22.12.2023 16:08:25 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - Payment added: 58
+22.12.2023 16:08:27 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as active: 74
+22.12.2023 16:08:35 - User Id: b7f8af24-bf10-479a-a3ee-60eb2659e52b - MyTicket marked as active: 76
+22.12.2023 16:17:36 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - User edited: ce76ae6c-0dc3-44df-9d69-95da7c9b9230
+22.12.2023 16:18:50 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - Classes updated: 51
+22.12.2023 16:19:10 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - Classes updated: 13
+22.12.2023 16:20:10 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - Classes updated: 27
+22.12.2023 16:29:27 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - Opinion added: 36
+22.12.2023 17:12:19 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Equipment updated: A/0002
+22.12.2023 17:12:22 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Equipment updated: A/0002
+22.12.2023 17:12:28 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Equipment updated: A/0001
+22.12.2023 17:14:40 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - MyTicket added: 84
+22.12.2023 17:14:44 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - MyTicket deleted: 84
+22.12.2023 17:14:54 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - MyTicket added: 85
+22.12.2023 17:15:25 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - MyTicket added: 86
+22.12.2023 17:15:25 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - MyTicket marked as paid: 86
+22.12.2023 17:15:25 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - Payment added: 59
+22.12.2023 17:40:29 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Task deleted: 22
+22.12.2023 17:40:30 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Task deleted: 28
+22.12.2023 17:40:49 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Task added: 29
+22.12.2023 17:41:05 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Task added: 30
+22.12.2023 20:30:27 - User Id: ce76ae6c-0dc3-44df-9d69-95da7c9b9230 - Classes added: 52
+23.12.2023 14:00:31 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - Opinion updated: 36
+23.12.2023 14:00:43 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - Opinion updated: 34
+23.12.2023 16:00:53 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Task added: 31
+23.12.2023 16:00:58 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Task deleted: 31
+28.12.2023 19:42:57 - User Id: 72b93486-d781-410f-820c-de8ab6e371b5 - Opinion updated: 36
+05.01.2024 17:15:00 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - News added: 31
+05.01.2024 17:15:02 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - News deleted: 31
+12.01.2024 19:09:06 - User Id: 97617729-083d-43df-8e11-2b4908fdc1eb - Advertisement added: 35

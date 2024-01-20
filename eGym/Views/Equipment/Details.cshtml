@@ -1,0 +1,63 @@
+﻿@model eGym.Models.EquipmentModel
+@{
+    ViewData["Title"] = "Equipment details";
+    bool Admin = User.IsInRole("admin");
+}
+<h1 class="display-4">Equipment details</h1>
+
+<hr />
+<br />
+<br />
+<br />
+<div class="row">
+    <dl class="row">
+        <dt class="col-sm-2">
+            <label>Equipment Id</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Name</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Gym</label>
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.Gym
+        </dd>
+        <dt class="col-sm-2">
+            <label>Equipment status</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EquipmentStatus)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Last modified date</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastModifiedDate)
+        </dd>
+    </dl>
+</div>
+
+
+<div class="form-group">
+    @if(Admin)
+    {
+        <a href="/Equipment/EquipmentList?id=@Html.DisplayFor(model => model.GymId)" class="btn btn-dark">Gym equipment</a>
+    }
+    else
+    {
+        <a href="/Equipment/EquipmentList" class="btn btn-dark">Gym equipment</a>
+    }
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

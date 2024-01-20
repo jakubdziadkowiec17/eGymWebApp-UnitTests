@@ -1,0 +1,123 @@
+﻿@model IEnumerable<eGym.Models.GymModel>
+@{
+    ViewData["Title"] = "Gyms";
+    bool Admin = User.IsInRole("admin");
+    bool Employee = User.IsInRole("employee");
+    bool Client = User.IsInRole("client");
+}
+
+<div class="text-center">
+    <h1 class="display-3">Gyms</h1>
+</div>
+<br />
+        @if (Admin)
+        {
+            <p>
+                <a class="btn btn-success btn-lg" asp-action="Add">Create</a>
+            </p>}
+<div class="form-group">
+    <input type="text" class="form-control" id="search" placeholder="Enter name or locality">
+</div>
+<br />
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            @if (Admin)
+        {
+            <th>
+                Id
+            </th>
+        }
+            <th>
+                Name
+            </th>
+            <th>
+                Locality
+            </th>
+            @if (Admin)
+            {
+                <th>
+                    Created date
+                </th>
+            }
+            <th>
+                Opinions
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (Admin)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.GymName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Locality)
+                </td>
+                @if (Admin)
+                {
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                }
+                <td>
+                    <a href="/Opinion/OpinionList?id=@item.Id">@(ViewBag.GymRating.ContainsKey(item.Id) ? ViewBag.GymRating[item.Id] : 0)/5 (@(ViewBag.GymSum.ContainsKey(item.Id) ? ViewBag.GymSum[item.Id] : 0))</a>
+                </td>
+                    <td>
+                    <a href="/Gym/Details?id=@item.Id" class="btn btn-primary">Details</a>
+                    <a href="/Classes/GymsClassesList?id=@item.Id" class="btn btn-warning">Classes</a>
+                    @if (Admin || Employee)
+                    {
+                        <a href="/MyTicket/MyTicketList?id=@item.Id" class="btn btn-secondary">Active tickets</a>
+                    }
+                    @if (Admin || (Employee && item.Id == ViewBag.UserGymId))
+                    {
+                        <a href="/User/EmployeeList?id=@item.Id" class="btn btn-success">Employees</a>
+                        <a href="/Equipment/EquipmentList?id=@item.Id" class="btn btn-dark">Equipment</a>
+                    }
+                    @if (Admin)
+                    {
+                    <a href="/Payment/PaymentList?id=@item.Id" class="btn btn-info">Payments</a>
+                    <a href="/Gym/Edit?id=@item.Id" class="btn btn-warning">Edit</a>
+                    <a onclick="return window.confirm('Are you sure you want to delete the specified record?')" href="/Gym/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                    }
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+@section Scripts
+    {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $("#search").on("input", function () {
+                var searchValue = $(this).val().toLowerCase();
+                $("tbody tr").each(function () {
+                    var fullName = ($(this).find("td:eq(1)").text() + " " + $(this).find("td:eq(2)").text()).toLowerCase();
+                    if (fullName.includes(searchValue)) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,123 @@
+﻿@using System.Security.Claims;
+@model IEnumerable<eGym.Models.ClassesModel>
+@{
+    ViewData["Title"] = "Gym's classes";
+    bool Admin = User.IsInRole("admin");
+    bool Employee = User.IsInRole("employee");
+    bool Client = User.IsInRole("client");
+}
+<div class="row justify-content-center">
+<div class="text-center">
+        <h1 class="display-3">Gym's classes</h1>
+    </div>
+<br />
+<br />
+    <br />
+    <br />
+    <br />
+        <div class="form-group">
+            <input type="text" class="form-control" id="search" placeholder="Enter name or gym">
+        </div>
+        <br />
+        <br />
+    <div class="table-responsive">
+    <table class="table table-striped">
+    <thead>
+        <tr>
+                <th>Name</th>
+                <th>Gym</th>
+                <th>Trainer</th>
+                <th>Number of people</th>
+                <th>Price</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>
+                        @{
+                            var selectedGym = (ViewBag.GymList as SelectList)?.FirstOrDefault(g =>
+                            {
+                                int gymId;
+                                return int.TryParse(g.Value, out gymId) && gymId == item.GymId;
+                            });
+                            var selectedGymName = selectedGym?.Text;
+                        }
+                        @selectedGymName
+                    </td>
+                    <td>
+                        @{
+                            var selectedUser = (ViewBag.Users as SelectList)?.FirstOrDefault(u =>
+                            {
+                                return u.Value == item.EmployeeId;
+                            });
+                            var selectedUserName = selectedUser?.Text;
+                        }
+                        @selectedUserName
+                    </td>
+                    <td>
+                        @(ViewBag.PeopleCount.ContainsKey(item.Id) ? ViewBag.PeopleCount[item.Id] : 0)/@Html.DisplayFor(modelItem => item.NumberOfPeople)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)  zł</td>
+                    <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                        <td>
+                        @if (Client && item.StartDate > DateTime.Now)
+                        {
+                            var numberOfPeople = item.NumberOfPeople;
+
+                            @if ((ViewBag.PeopleCount.ContainsKey(item.Id) ? ViewBag.PeopleCount[item.Id] : 0) < numberOfPeople)
+                            {
+                                <a href="/Classes/Reserve?id=@item.Id" class="btn btn-success">Reserve</a>
+                            }
+                        }
+                        <a href="/Classes/Details?id=@item.Id" class="btn btn-primary">Details</a>
+                        @if ((Employee && item.GymId == ViewBag.IdGym && item.StartDate > DateTime.Now) || Admin)
+                        {
+                            <a href="/Classes/MyClassesList?id=@Html.DisplayFor(model => item.EmployeeId)" class="btn btn-dark">Trainer's Classes</a>
+                        }
+                        @if (Employee && item.EmployeeId == User.FindFirst(ClaimTypes.NameIdentifier)?.Value && item.StartDate > DateTime.Now)
+                        {
+                            <a href="/Classes/Edit?id=@item.Id" class="btn btn-warning">Edit</a>
+                        }
+                        @if ((Employee && item.EmployeeId == User.FindFirst(ClaimTypes.NameIdentifier)?.Value || Admin) && item.StartDate > DateTime.Now)
+                        {
+                            @if ((ViewBag.PeopleCount.ContainsKey(item.Id) ? ViewBag.PeopleCount[item.Id] : 0) == 0)
+                            {
+                            <a onclick="return window.confirm('Are you sure you want to delete the specified record?')" href="/Classes/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                            }
+                        }
+                        </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>
+@section Scripts
+    {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $("#search").on("input", function () {
+                var searchValue = $(this).val().toLowerCase();
+                $("tbody tr").each(function () {
+                    var fullName = ($(this).find("td:eq(0)").text() + " " + $(this).find("td:eq(1)").text()).toLowerCase();
+                    if (fullName.includes(searchValue)) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+}

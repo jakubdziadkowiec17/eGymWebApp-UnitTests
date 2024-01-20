@@ -1,0 +1,71 @@
+﻿@model eGym.Models.TaskModel
+@{
+    ViewData["Title"] = "Task details";
+}
+<h1 class="display-4">Task details</h1>
+
+<hr />
+<br />
+<br />
+<div class="row">
+    <dl class="row">
+        <dt class="col-sm-2">
+            <label>Task Id</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Employee</label>
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.User
+        </dd>
+        <dt class="col-sm-2">
+            <label>Title</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Content</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Task status</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TaskStatus)
+        </dd>
+        <dt class="col-sm-2">
+            <label>Created date</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt class="col-sm-2">
+            <label>End date</label>
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.EndDate != null)
+            {
+                @Html.DisplayFor(model => model.EndDate)
+            }
+            else
+            {
+                <span>-</span>
+            }
+        </dd>
+    </dl>
+</div>
+<div class="form-group">
+    <a href="/Task/TaskList?id=@Html.DisplayFor(model => model.UserId)" class="btn btn-dark">Tasks</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

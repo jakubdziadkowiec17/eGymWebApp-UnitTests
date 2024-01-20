@@ -1,0 +1,117 @@
+﻿@model IEnumerable<eGym.Models.EquipmentModel>
+@{
+    ViewData["Title"] = "Equipment";
+    bool Admin = User.IsInRole("admin");
+    bool Employee = User.IsInRole("employee");
+}
+<div class="row">
+<div class="text-center">
+        <h1 class="display-3">Equipment</h1>
+</div>
+<br />
+<br />
+    <br />
+    <br />
+    @if(Admin)
+    {
+    <p>
+        <a class="btn btn-success btn-lg" asp-action="Add">Create</a>
+            <br />
+    </p>
+    }
+    @if (Employee || Admin)
+    {
+        <div class="form-group">
+            <input type="text" class="form-control" id="search" placeholder="Enter equipment id or name">
+        </div>
+        <br />
+        <br />
+    }
+    <div class="table-responsive">
+    <table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Equipment Id
+                </th>
+                <th>
+                    Name
+                </th>
+            <th>
+                    Gym
+            </th>
+                <th>
+                    Equipment status
+                </th>
+            <th>
+                    Last modified date
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr class="@((item.EquipmentStatus == eGym.Models.EquipmentStatus.InUse) ? "table-success" : "")">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @{
+                            var selectedGym = (ViewBag.Gym as SelectList)?.FirstOrDefault(g =>
+                            {
+                                int gymId;
+                                return int.TryParse(g.Value, out gymId) && gymId == item.GymId;
+                            });
+
+                            var selectedGymName = selectedGym?.Text;
+                        }
+                        @selectedGymName
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EquipmentStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastModifiedDate)
+                    </td>
+                        <td>
+                        <a href="/Equipment/Details?id=@item.Id" class="btn btn-primary">Details</a>
+                        <a href="/Equipment/Edit?id=@item.Id" class="btn btn-warning">Edit</a>
+                        @if (Admin)
+                        {
+                            <a onclick="return window.confirm('Are you sure you want to delete the specified record?')" href="/Equipment/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                        }
+                        </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>
+@section Scripts
+    {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $("#search").on("input", function () {
+                var searchValue = $(this).val().toLowerCase();
+                $("tbody tr").each(function () {
+                    var fullName = ($(this).find("td:eq(0)").text() + " " + $(this).find("td:eq(1)").text()).toLowerCase();
+                    if (fullName.includes(searchValue)) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+}

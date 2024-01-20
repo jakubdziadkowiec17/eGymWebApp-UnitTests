@@ -1,0 +1,101 @@
+﻿@model eGym.Models.OpinionModel
+@{
+    ViewData["Title"] = "My opinion";
+    bool Client = User.IsInRole("client");
+}
+
+    @if (Model.OpinionDate!=null)
+    {
+        <h1 class="display-4">
+        Modify an opinion
+        </h1>
+    }
+    else
+    {
+        <h1 class="display-4">
+            Insert an opinion
+        </h1>
+    }
+
+<hr />
+<br />
+@if (Model.OpinionDate!=null)
+    {
+    <label>You can edit your last opinion at any time by pressing the "Modify an opinion" button</label>
+    <br />
+    }
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="GymId" class="form-control" hidden/>
+                <span asp-validation-for="GymId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Gym</label>
+                <input type="text" value="@ViewBag.Gym" class="form-control" readonly="readonly" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label class="control-label">Rating</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="Rating" value="1">
+                    <label class="form-check-label">1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="Rating" value="2">
+                    <label class="form-check-label">2</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="Rating" value="3">
+                    <label class="form-check-label">3</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="Rating" value="4">
+                    <label class="form-check-label">4</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="Rating" value="5">
+                    <label class="form-check-label">5</label>
+                </div>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label class="control-label">Comment</label>
+                <textarea asp-for="Comment" class="form-control"></textarea>
+                <span asp-validation-for="Comment" class="text-danger"></span>
+            </div>
+            @if (Model.OpinionDate!=null)
+            {
+                <br />
+            <div class="form-group">
+                    <label class="control-label">Opinion date (when you resend your opinion, this field will be updated)</label>
+                <input asp-for="OpinionDate" class="form-control" readonly="readonly" />
+                <span asp-validation-for="OpinionDate" class="text-danger"></span>
+            </div>
+            }
+            <br />
+            <div class="form-group">
+                <a href="/Opinion/OpinionList?id=@Model.GymId" class="btn btn-dark">Back to Opinion list</a>
+                @if (Model.OpinionDate==null)
+                {
+                    <input type="submit" value="Insert an opinion" class="btn btn-primary" />
+                }
+                else
+                {
+                    <input type="submit" value="Modify an opinion" class="btn btn-primary" />
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

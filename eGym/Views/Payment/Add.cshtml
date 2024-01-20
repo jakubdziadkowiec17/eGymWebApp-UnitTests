@@ -1,0 +1,48 @@
+﻿@model eGym.Models.PaymentModel
+@{
+    ViewData["Title"] = "Create a payment";
+}
+<h1 class="display-4">Create a payment</h1>
+
+<hr />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Gym</label>
+                <select asp-for="GymId" asp-items="ViewBag.GymList" class="form-select" aria-label="Select gym"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Type: Withdraw - Off / Deposit - On</label>
+                <div class="form-check form-switch">
+                <input asp-for="Deposit" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                <span asp-validation-for="Deposit" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Sum [zł]</label>
+                <input asp-for="Sum" class="form-control" />
+                <span asp-validation-for="Sum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <a href="/Payment/PaymentList" class="btn btn-dark">Payments</a>
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

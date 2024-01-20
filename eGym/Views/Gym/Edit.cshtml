@@ -1,0 +1,56 @@
+﻿@model eGym.Models.GymModel
+@{
+    ViewData["Title"] = "Edit a gym";
+}
+<h1 class="display-4">Edit a gym</h1>
+
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div class="form-group">
+                <label class="control-label">Id</label>
+                <input asp-for="Id" class="form-control" readonly/>
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Name</label>
+                <input asp-for="GymName" class="form-control" />
+                <span asp-validation-for="GymName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Locality</label>
+                <input asp-for="Locality" class="form-control" />
+                <span asp-validation-for="Locality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Opening hours</label>
+                <textarea asp-for="OpeningHours" class="form-control"></textarea>
+                <span asp-validation-for="OpeningHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Created date</label>
+                <input asp-for="CreatedDate" class="form-control" readonly="readonly" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Map</label>
+                <input asp-for="Map" class="form-control" />
+                <span asp-validation-for="Map" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <a class="btn btn-dark" asp-controller="Gym" asp-action="GymList">Gym list</a>
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

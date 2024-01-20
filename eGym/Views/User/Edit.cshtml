@@ -1,0 +1,68 @@
+﻿@model eGym.Models.UserModel
+@{
+    ViewData["Title"] = "Edit Profile";
+    bool Employee = User.IsInRole("employee");
+}
+<center>
+<h1 class="display-4">Edit Profile</h1>
+    </center>
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" class="input" asp-for="Id">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Last name</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">E-mail</label>
+                <input asp-for="Email" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Username</label>
+                <input asp-for="UserName" class="form-control" readonly="readonly" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Phone number</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Address</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            @if (Employee)
+            {
+                <div class="form-group">
+                    <label class="control-label">Gym</label>
+                    <input class="form-control" value="@ViewBag.GymName4" readonly />
+                </div>
+            }
+            <br />
+            <div class="form-group">
+                <a class="btn btn-dark" asp-controller="Home" asp-action="Index">Home page</a>
+                <input type="submit" value="Edit Profile" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

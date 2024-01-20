@@ -1,0 +1,85 @@
+﻿@model IEnumerable<eGym.Models.NewsModel>
+@{
+    ViewData["Title"] = "News";
+    bool Admin = User.IsInRole("admin");
+}
+<div class="row">
+<div class="text-center">
+        <h1 class="display-3">News</h1>
+</div>
+<br />
+<br />
+        @if (Admin)
+        {
+        <p>
+        <a class="btn btn-success btn-lg" asp-action="Add">Create</a>
+        </p>
+        }
+    <div class="table-responsive">
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                    Title
+            </th>
+                <th>
+                    Content
+                </th>
+            <th>
+                    Active
+            </th>
+                <th>
+                    Created date
+                </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                    <td>
+                        @{
+                            string Content1 = item.Content.Length > 100
+                            ? item.Content.Substring(0, 100) + "..."
+                            : item.Content;
+                        }
+                        @Html.Raw(Content1)
+                    </td>
+                <td>
+                    @if (item.Active)
+                    {
+                        <span>Yes</span>
+                    }
+                    else
+                    {
+                        <span>No</span>
+                    }
+                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                        <td>
+                        <a href="/News/Details?id=@item.Id" class="btn btn-primary">Details</a>
+                        @if (Admin)
+                        {
+                            <a href="/News/Edit?id=@item.Id" class="btn btn-warning">Edit</a>
+                            <a onclick="return window.confirm('Are you sure you want to delete the specified record?')" href="/News/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                        }
+                        </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

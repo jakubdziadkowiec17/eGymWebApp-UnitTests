@@ -1,0 +1,131 @@
+﻿@model IEnumerable<eGym.Models.TaskModel>
+@{
+    ViewData["Title"] = "Tasks";
+    bool Admin = User.IsInRole("admin");
+    bool Employee = User.IsInRole("employee");
+}
+<div class="row">
+<div class="text-center">
+        <h1 class="display-3">Tasks</h1>
+</div>
+<br />
+<br />
+<br />
+<br />
+    <br />
+    @if (Employee || Admin)
+    {
+        <div class="form-group">
+            <input type="text" class="form-control" id="search" placeholder="Enter id or title">
+        </div>
+        <br />
+        <br />
+    }
+    <div class="table-responsive">
+    <table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Task Id
+                </th>
+                <th>
+                    Employee
+                </th>
+            <th>
+                    Title
+            </th>
+                <th>
+                    Content
+                </th>
+            <th>
+                    Task status
+            </th>
+                <th>
+                    Created date
+                </th>
+                <th>
+                    End date
+                </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr class="@((item.TaskStatus == eGym.Models.TaskStatus.Completed) ? "table-success" : "")">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @ViewBag.User
+                    </td>
+                <td>
+                        @{
+                            string Content1 = item.Title.Length > 50
+                            ? item.Title.Substring(0, 50) + "..."
+                            : item.Title;
+                        }
+                        @Html.Raw(Content1)
+                </td>
+                    <td>
+                        @{
+                            string Content2 = item.Content.Length > 50
+                            ? item.Content.Substring(0, 50) + "..."
+                            : item.Content;
+                        }
+                        @Html.Raw(Content2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td>
+                        @if (item.EndDate != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </td>
+                        <td>
+                        <a href="/Task/Details?id=@item.Id" class="btn btn-primary">Details</a>
+                        <a href="/Task/Edit?id=@item.Id" class="btn btn-warning">Edit</a>
+                        @if (Admin)
+                        {
+                            <a onclick="return window.confirm('Are you sure you want to delete the specified record?')" href="/Task/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                        }
+                        </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>
+@section Scripts
+    {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $("#search").on("input", function () {
+                var searchValue = $(this).val().toLowerCase();
+                $("tbody tr").each(function () {
+                    var fullName = ($(this).find("td:eq(0)").text() + " " + $(this).find("td:eq(2)").text()).toLowerCase();
+                    if (fullName.includes(searchValue)) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+}

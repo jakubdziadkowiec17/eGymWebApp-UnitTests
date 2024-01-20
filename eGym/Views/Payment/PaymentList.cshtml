@@ -1,0 +1,96 @@
+﻿@model IEnumerable<eGym.Models.PaymentModel>
+@{
+    ViewData["Title"] = "Payments";
+    bool Admin = User.IsInRole("admin");
+}
+<div class="row">
+<div class="text-center">
+        <h1 class="display-3">Payments @ViewBag.GymName</h1>
+</div>
+<br />
+<br />
+    @if(Admin)
+    {
+        <div class="d-flex justify-content-between">
+            <div>
+                <a class="btn btn-success btn-lg" asp-action="Add">Create</a>
+            </div>
+
+            <div class="ml-auto">
+                <b>Balance: @ViewBag.Sum zł</b>
+            </div>
+        </div>
+        <br />
+        <br />
+    }
+    <div class="table-responsive">
+    <table class="table table-bordered table-rounded">
+    <thead>
+        <tr>
+                <th>Id</th>
+                <th>Gym Id</th>
+                <th>Type</th>
+                <th>Sum</th>
+                <th>Source</th>
+                <th>Source Id</th>
+                <th>Description</th>
+                <th>Payment Date</th>
+                <th>User entering the payment</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GymId)
+                    </td>
+                    <td>
+                        @if (item.Deposit==true)
+                        {
+                            <span>Deposit</span>
+                        }
+                        else
+                        {
+                            <span>Withdraw</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sum) zł
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Source)
+                    </td>
+                    <td>
+                        @if (item.SourceId != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.SourceId)
+                        }
+                        else
+                        {
+                            <span>None</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserEnteringThePayment)
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

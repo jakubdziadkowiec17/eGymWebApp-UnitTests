@@ -11,6 +11,13 @@ The project focuses on designing, building and testing software to operate gym n
 
 ----------------------------------------
 
+**Features of the project**
+
+- Unit testing of controllers
+- Unit testing of repositories
+
+----------------------------------------
+
 **Sample photos showing how the tests works**
 
 *Unit tests for controller methods:*

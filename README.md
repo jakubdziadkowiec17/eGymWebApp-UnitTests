@@ -1,7 +1,7 @@
 # eGym - Web Application - Unit Tests
 
 The project focuses on designing, building and testing software to operate gym networks. To check the correct operation of the system, the project used unit tests. Methods used in controllers and repositories were tested. The project is based on the Model-View-Controller (MVC) architecture pattern. With the help of modern tools and technologies supporting testing, it was also possible to quickly and effectively control the correct operation of the software.
-
+  
 ----------------------------------------
 
 **Technologies used to test the project**
